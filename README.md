@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Salla Antigravity Premium Theme 🚀
 
 A modern, high-performance Salla theme built with the **Twilight Engine**, **Twig**, and **Tailwind CSS**.
@@ -80,3 +81,6 @@ The included `.github/workflows/salla-deploy.yml` will automatically:
 
 ---
 Built with ❤️ by **Antigravity AI**
+=======
+# salla-theme
+>>>>>>> 3a6436816f16637b39d12e86cad510461544fe18
