@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="{{ shop.language.code }}" dir="{{ shop.language.direction }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ shop.name }} - {{ page.title|default('Home') }}</title>
+    
+    {# Metadata #}
+    <meta name="description" content="{{ page.description|default(shop.description) }}">
+    
+    {# CSS Assets #}
+    <link rel="stylesheet" href="{{ 'assets/css/app.css' | asset }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Tajawal', 'Inter', sans-serif; }
+        .hero-gradient { background: linear-gradient(135deg, #1e293b 0%, #4f46e5 100%); }
+        [dir="rtl"] .ml-auto { margin-right: auto; margin-left: 0; }
+        [dir="rtl"] .mr-auto { margin-left: auto; margin-right: 0; }
+    </style>
+    
+    {{ theme.header_script|raw }}
+</head>
+<body class="bg-gray-50 text-slate-900 selection:bg-indigo-100 selection:text-indigo-700">
+
+    {# Header #}
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 h-20 flex items-center">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="{{ shop.url }}" class="flex items-center gap-2">
+                <img src="{{ shop.logo }}" alt="{{ shop.name }}" class="h-10 w-auto">
+                <span class="font-bold text-xl tracking-tight">{{ shop.name }}</span>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-8 font-medium">
+                <a href="{{ shop.url }}" class="hover:text-indigo-600 transition-colors">الرئيسية</a>
+                <a href="{{ url('products') }}" class="hover:text-indigo-600 transition-colors">المنتجات</a>
+                <a href="{{ url('categories') }}" class="hover:text-indigo-600 transition-colors">التصنيفات</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <a href="{{ url('cart') }}" class="relative p-2 hover:bg-gray-100 rounded-full transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                    {% if cart.count > 0 %}
+                    <span class="absolute top-0 right-0 h-4 w-4 bg-indigo-600 text-white text-[10px] flex items-center justify-center rounded-full">{{ cart.count }}</span>
+                    {% endif %}
+                </a>
+                <button class="md:hidden p-2 hover:bg-gray-100 rounded-full">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    {# Content #}
+    <main class="min-h-screen">
+        {% block content %}{% endblock %}
+    </main>
+
+    {# Footer #}
+    <footer class="bg-gray-900 text-gray-300 py-16">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="col-span-1 md:col-span-2">
+                <img src="{{ shop.logo }}" alt="{{ shop.name }}" class="h-12 w-auto mb-6 brightness-0 invert">
+                <p class="max-w-sm leading-relaxed mb-6">{{ shop.description }}</p>
+                <div class="flex gap-4">
+                    <a href="#" class="h-10 w-10 bg-gray-800 flex items-center justify-center rounded-full hover:bg-indigo-600 transition-colors">FB</a>
+                    <a href="#" class="h-10 w-10 bg-gray-800 flex items-center justify-center rounded-full hover:bg-indigo-600 transition-colors">TW</a>
+                    <a href="#" class="h-10 w-10 bg-gray-800 flex items-center justify-center rounded-full hover:bg-indigo-600 transition-colors">IG</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6">روابط سريعة</h4>
+                <ul class="space-y-4">
+                    <li><a href="{{ shop.url }}" class="hover:text-white transition-colors">الرئيسية</a></li>
+                    <li><a href="{{ url('products') }}" class="hover:text-white transition-colors">كل المنتجات</a></li>
+                    <li><a href="{{ url('about-us') }}" class="hover:text-white transition-colors">من نحن</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6">الدعم</h4>
+                <ul class="space-y-4">
+                    <li><a href="#" class="hover:text-white transition-colors">سياسة الخصوصية</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">الشروط والأحكام</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">تواصل معنا</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 mt-16 pt-8 border-t border-gray-800 text-center text-sm">
+            &copy; {{ "now"|date("Y") }} {{ shop.name }}. جميع الحقوق محفوظة.
+        </div>
+    </footer>
+
+    {# Scripts #}
+    <script src="{{ 'assets/js/app.js' | asset }}"></script>
+    {{ theme.footer_script|raw }}
+</body>
+</html>

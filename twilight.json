@@ -1,0 +1,45 @@
+{
+  "theme": {
+    "name": "Antigravity Premium",
+    "version": "1.0.0",
+    "author": "Antigravity AI",
+    "description": "Modern, sleek, and high-performance Salla theme.",
+    "support_url": "https://salla.sa",
+    "settings": {
+      "colors": {
+        "primary": "#4F46E5",
+        "secondary": "#1E293B",
+        "accent": "#FACC15",
+        "background": "#FFFFFF",
+        "text": "#111827"
+      },
+      "font": "Inter, Tajawal, sans-serif"
+    }
+  },
+  "features": {
+    "dark_mode": true,
+    "sticky_header": true,
+    "product_zoom": true
+  },
+  "views": {
+    "index": "pages/index.twig",
+    "product.single": "pages/product.twig",
+    "product.index": "pages/products.twig",
+    "cart": "pages/cart.twig",
+    "thank_you": "pages/thank-you.twig"
+  },
+  "components": [
+    {
+      "name": "Featured Products",
+      "id": "featured-products",
+      "settings": [
+        {
+          "id": "limit",
+          "type": "number",
+          "label": "Number of products",
+          "default": 8
+        }
+      ]
+    }
+  ]
+}

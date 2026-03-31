@@ -1,0 +1,18 @@
+{
+  "name": "salla-theme-antigravity",
+  "version": "1.0.0",
+  "description": "A modern, premium Salla theme with full automation.",
+  "author": "Antigravity AI",
+  "license": "Private",
+  "scripts": {
+    "dev": "salla theme preview",
+    "build": "salla theme build",
+    "salla": "salla"
+  },
+  "devDependencies": {
+    "@salla.sa/cli": "^latest",
+    "tailwindcss": "^3.0.0",
+    "postcss": "^8.0.0",
+    "autoprefixer": "^10.0.0"
+  }
+}

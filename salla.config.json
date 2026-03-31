@@ -1,0 +1,27 @@
+{
+  "theme_name": "Salla Antigravity",
+  "version": "1.0.0",
+  "author": "Antigravity AI",
+  "settings_structure": {
+    "colors_palette": {
+      "primary": "#4F46E5",
+      "secondary": "#1E293B",
+      "accent": "#FACC15"
+    },
+    "typography": {
+      "heading": "Inter",
+      "body": "Tajawal"
+    }
+  },
+  "views_mapping": {
+    "home": "src/views/pages/index.twig",
+    "products": "src/views/pages/products.twig",
+    "product_details": "src/views/pages/product.twig",
+    "cart": "src/views/pages/cart.twig"
+  },
+  "deployment": {
+    "provider": "GitHub Actions",
+    "branch": "main",
+    "auto_publish": true
+  }
+}

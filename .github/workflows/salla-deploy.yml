@@ -1,0 +1,48 @@
+name: Salla Theme Automation
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Install Salla CLI
+        run: npm install -g @salla.sa/cli
+
+      - name: Build Theme
+        run: npm run build
+
+      - name: Validate Files
+        run: |
+          if [ ! -f "twilight.json" ]; then
+            echo "Error: twilight.json missing"
+            exit 1
+          fi
+          if [ ! -d "src/views" ]; then
+            echo "Error: src/views missing"
+            exit 1
+          fi
+
+      # Deployment Step (Requires Salla Token in Secrets)
+      # - name: Deploy to Salla
+      #   if: github.event_name == 'push'
+      #   env:
+      #     SALLA_TOKEN: ${{ secrets.SALLA_TOKEN }}
+      #   run: salla theme publish --token $SALLA_TOKEN
