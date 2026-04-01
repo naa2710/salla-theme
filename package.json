@@ -10,7 +10,7 @@
     "salla": "salla"
   },
   "devDependencies": {
-    "@salla.sa/cli": "^latest",
+    "@salla.sa/cli": "latest",
     "tailwindcss": "^3.0.0",
     "postcss": "^8.0.0",
     "autoprefixer": "^10.0.0"
